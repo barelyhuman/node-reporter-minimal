@@ -1,0 +1,29 @@
+{
+  "name": "reporter-minimal",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [
+    "github actions",
+    "node:test",
+    "test",
+    "reporter",
+    "reporters"
+  ],
+  "homepage": "https://github.com/barelyhuman/node-reporter-minimal/tree/main/packages/github",
+  "bugs": {
+    "url": "https://github.com/barelyhuman/node-reporter-minimal/issues"
+  },
+  "repository": "https://github.com/barelyhuman/node-reporter-minimal.git",
+  "license": "MIT",
+  "author": "reaper <ahoy@barelyhuman.dev>",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test-reporter=spec --test-reporter-destination=stdout  --test-reporter=./index.js --test-reporter-destination=stdout --test"
+  },
+  "prettier": "@barelyhuman/prettier-config",
+  "devDependencies": {
+    "@barelyhuman/prettier-config": "^1.1.0",
+    "prettier": "^3.3.3"
+  }
+}
