@@ -19,13 +19,17 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "node --test-reporter=spec --test-reporter-destination=stdout  ./tests/*.test.js"
+    "test": "node --test-reporter=spec --test-reporter-destination=stdout  ./tests/*.test.js",
+    "fix": "prettier --write .",
+    "package:lint": "publint",
+    "next": "bumpp"
   },
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
     "@barelyhuman/node-snapshot": "^0.0.4-beta.1",
     "@barelyhuman/prettier-config": "^1.1.0",
+    "bumpp": "^9.5.1",
     "prettier": "^3.3.3",
-    "pretty-format": "^29.7.0"
+    "publint": "^0.2.10"
   }
 }
