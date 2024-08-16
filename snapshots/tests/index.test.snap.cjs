@@ -1,4 +1,4 @@
-exports[`spawn with reporter 1`]=`"[2m
+exports[`spawn with reporter 1`] = `"[2m
 > Test [22m[1mtests/__spec__/basic.test.js
 [22m[32m√ [39mall passing[2m [22m
 [31mx [39mlevel 1 fails[2m [22m
@@ -24,4 +24,3 @@ exports[`spawn with reporter 1`]=`"[2m
              assert.ok(!1)
            
 [39m"`
-

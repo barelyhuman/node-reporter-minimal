@@ -22,14 +22,21 @@
     "test": "node --test-reporter=spec --test-reporter-destination=stdout  ./tests/*.test.js",
     "fix": "prettier --write .",
     "package:lint": "publint",
-    "next": "bumpp"
+    "next": "bumpp",
+    "prepare": "husky"
   },
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
     "@barelyhuman/node-snapshot": "^0.0.4-beta.1",
     "@barelyhuman/prettier-config": "^1.1.0",
     "bumpp": "^9.5.1",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "publint": "^0.2.10"
+  },
+  "lint-staged": {
+    "*.{js,cjs,css,md}": "prettier --write",
+    "*.json": "prettier --write"
   }
 }
