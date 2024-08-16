@@ -1,16 +1,23 @@
 'use strict'
 
-const { it, describe, beforeEach } = require('node:test')
-const assert = require('assert/strict')
+const { test, before } = require('node:test')
+const { spawnSync } = require('child_process')
 
-describe('parent', () => {
-  it('something', () => {
-    assert.ok(!1)
-  })
+let snapshot
 
-  describe('nested', () => {
-    it('nested something', () => {
-      assert.ok(!1)
-    })
-  })
+const removeTimeStamps = text => {
+  return text.replace(/\[((\d+\.\d+)ms)\]/g, '')
+}
+
+before(async () => {
+  await import('@barelyhuman/node-snapshot').then(d => (snapshot = d.snapshot))
+})
+
+test('spawn with reporter', async t => {
+  const child = spawnSync(
+    process.execPath,
+    ['--test-reporter', './index.js', './tests/__spec__/basic.test.js'],
+    { env: { FORCE_COLOR: 1 } }
+  )
+  snapshot(t, removeTimeStamps(child.stdout.toString()))
 })

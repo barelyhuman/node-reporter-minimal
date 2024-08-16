@@ -19,11 +19,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "node --test-reporter=spec --test-reporter-destination=stdout  --test-reporter=./index.js --test-reporter-destination=stdout --test"
+    "test": "node --test-reporter=spec --test-reporter-destination=stdout  ./tests/*.test.js"
   },
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
+    "@barelyhuman/node-snapshot": "^0.0.3",
     "@barelyhuman/prettier-config": "^1.1.0",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "pretty-format": "^29.7.0"
   }
 }
