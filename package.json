@@ -23,7 +23,7 @@
   },
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
-    "@barelyhuman/node-snapshot": "^0.0.3",
+    "@barelyhuman/node-snapshot": "^0.0.4-beta.1",
     "@barelyhuman/prettier-config": "^1.1.0",
     "prettier": "^3.3.3",
     "pretty-format": "^29.7.0"

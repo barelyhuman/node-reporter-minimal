@@ -2,16 +2,11 @@
 
 const { test, before } = require('node:test')
 const { spawnSync } = require('child_process')
-
-let snapshot
+const snapshot = require('@barelyhuman/node-snapshot').snapshot
 
 const removeTimeStamps = text => {
   return text.replace(/\[((\d+\.\d+)ms)\]/g, '')
 }
-
-before(async () => {
-  await import('@barelyhuman/node-snapshot').then(d => (snapshot = d.snapshot))
-})
 
 test('spawn with reporter', async t => {
   const child = spawnSync(
