@@ -37,6 +37,13 @@ jobs:
       - name: Tag Beta
         if: contains(steps.get-package-version.outputs.version, '-beta')
         run: |
-          npm dist-tags add @barelyhuman/node-snapshot@${{ steps.get-package-version.outputs.version }} beta
+          npm dist-tags add reporter-minimal@${{ steps.get-package-version.outputs.version }} beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      - name: Tag Release
+        if: ${{ !contains(steps.get-package-version.outputs.version, '-beta') }}
+        run: |
+          npm dist-tags add reporter-minimal@${{ steps.get-package-version.outputs.version }} latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
