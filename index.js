@@ -2,6 +2,9 @@
 
 const { relative } = require('path')
 
+const cross = 'x'
+const check = '√'
+
 const color = (code, end) => str => `\x1B[${code}m${str}\x1B[${end}m`
 const bold = color(1, 22)
 const dim = color(2, 22)
@@ -9,7 +12,10 @@ const red = color(31, 39)
 const green = color(32, 39)
 const pad = count => '  '.repeat(count)
 const header = (test, duration, passed) =>
-  (!passed ? red('x ') : green('√ ')) + test + dim(` [${duration}ms]`) + '\n'
+  (!passed ? red(`${cross} `) : green(`${check} `)) +
+  test +
+  dim(` [${duration}ms]`) +
+  '\n'
 
 const printEvents = (baseTestEvent, depth = baseTestEvent.depth || 0) => {
   const children = baseTestEvent.children || []
@@ -115,10 +121,9 @@ const run = {
 module.exports = async function* minimalReporter(source) {
   for await (const event of source) {
     switch (event.type) {
-      case 'test:start': {
+      case 'test:start':
         run.add(run.create(event))
         break
-      }
 
       case 'test:pass':
       case 'test:fail':
@@ -127,6 +132,9 @@ module.exports = async function* minimalReporter(source) {
 
       case 'test:stderr':
         yield `${event.data.message}`
+        break
+
+      default:
         break
     }
   }
