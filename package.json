@@ -1,9 +1,8 @@
 {
   "name": "reporter-minimal",
   "version": "0.0.0",
-  "description": "",
+  "description": "A minimal test reporter for node:test",
   "keywords": [
-    "github actions",
     "node:test",
     "test",
     "reporter",
@@ -19,11 +18,15 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "node --test-reporter=spec --test-reporter-destination=stdout  ./tests/*.test.js",
     "fix": "prettier --write .",
-    "package:lint": "publint",
     "next": "bumpp",
-    "prepare": "husky"
+    "package:lint": "publint",
+    "prepare": "husky",
+    "test": "node --test-reporter=spec --test-reporter-destination=stdout  ./tests/*.test.js"
+  },
+  "lint-staged": {
+    "*.{js,cjs,css,md}": "prettier --write",
+    "*.json": "prettier --write"
   },
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
@@ -34,9 +37,5 @@
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "publint": "^0.2.10"
-  },
-  "lint-staged": {
-    "*.{js,cjs,css,md}": "prettier --write",
-    "*.json": "prettier --write"
   }
 }
