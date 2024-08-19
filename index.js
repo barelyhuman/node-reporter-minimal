@@ -17,6 +17,8 @@ const header = (test, duration, passed) =>
   dim(` [${duration}ms]`) +
   '\n'
 
+const cleanTermLink = link => link.replace(process.cwd(), '').replace(/^\//, '')
+
 const printEvents = (baseTestEvent, depth = baseTestEvent.depth || 0) => {
   const children = baseTestEvent.children || []
   const hasErrors = children.find(d => d.hasError)
@@ -41,7 +43,7 @@ const printEvents = (baseTestEvent, depth = baseTestEvent.depth || 0) => {
         childTestEvents.name +
         '\n' +
         pad(depth + childTestEvents.depth + 1) +
-        dim(childTestEvents.termLink) +
+        dim(cleanTermLink(childTestEvents.termLink)) +
         '\n' +
         red(
           pad(depth + childTestEvents.depth + 1) +

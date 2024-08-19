@@ -1,6 +1,6 @@
 'use strict'
 
-const { test, before } = require('node:test')
+const { test } = require('node:test')
 const { spawnSync } = require('child_process')
 const snapshot = require('@barelyhuman/node-snapshot').snapshot
 
