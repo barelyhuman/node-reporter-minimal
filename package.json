@@ -1,6 +1,6 @@
 {
   "name": "reporter-minimal",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A minimal test reporter for node:test",
   "keywords": [
     "node:test",
