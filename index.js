@@ -65,7 +65,7 @@ const run = {
     return {
       name: event.data.name,
       depth: event.data.nesting,
-      diagnostics: event.data.details,
+      diagnostics: event.data.details || {},
       file: event.data.file,
       termLink: `${event.data.file}:${event.data.line}:${event.data.column}`,
       hasError,
@@ -123,6 +123,7 @@ const run = {
 }
 
 module.exports = async function* minimalReporter(source) {
+  const diagnosticErrors = []
   for await (const event of source) {
     switch (event.type) {
       case 'test:start':
@@ -134,8 +135,12 @@ module.exports = async function* minimalReporter(source) {
         run.add(run.create(event), true)
         break
 
+      case 'test:diagnostic':
+        if (event.data.message.toLowerCase().includes('error'))
+          diagnosticErrors.push(event.data.message)
+        break
       case 'test:stderr':
-        yield `${event.data.message}`
+        yield `${event.data.message}\n`
         break
 
       default:
@@ -144,4 +149,7 @@ module.exports = async function* minimalReporter(source) {
   }
 
   yield run.end()
+
+  if (diagnosticErrors.length)
+    yield `Diagnostic Errors:\n` + diagnosticErrors.join('\n')
 }
