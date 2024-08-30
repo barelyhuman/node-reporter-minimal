@@ -90,11 +90,14 @@ const run = {
       return
     }
 
-    const parentNode = run.tree
-      .slice()
-      .reverse()
-      .find(d => d.file === event.file && d.depth === event.depth - 1)
-
+    let parentNode
+    for (let i = run.tree.length - 1; i >= 0; i--) {
+      const node = run.tree[i]
+      if (node.file === event.file && node.depth === event.depth - 1) {
+        parentNode = node
+        break
+      }
+    }
     if (!parentNode) {
       return
     }
@@ -110,11 +113,10 @@ const run = {
     let output =
       dim('\n> Test ') + bold(`${relative(process.cwd(), run.tree[0].file)}\n`)
 
-    run.tree
-      .filter(d => d.depth == 0)
-      .forEach(rootTest => {
-        output += printEvents(rootTest)
-      })
+    for (let node of run.tree) {
+      if (node.depth !== 0) continue
+      output += printEvents(node)
+    }
 
     return output
   },
