@@ -36,9 +36,9 @@
   },
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
-    "@barelyhuman/node-snapshot": "^0.0.4-beta.1",
+    "@barelyhuman/node-snapshot": "^1.0.3",
     "@barelyhuman/prettier-config": "^1.1.0",
-    "bumpp": "^9.5.1",
+    "bumpp": "^10.4.0",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",

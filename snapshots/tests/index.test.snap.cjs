@@ -1,4 +1,4 @@
-exports[`spawn with reporter 1`] = `"[2m
+exports["spawn with reporter 1"] = `"[2m
 > Test [22m[1mtests/__spec__/basic.test.js
 [22m[32m√ [39mall passing[2m [22m
 [31mx [39mlevel 1 fails[2m [22m
@@ -24,4 +24,6 @@ exports[`spawn with reporter 1`] = `"[2m
              assert.ok(!1)
            
 [39m[32m√ [39masync work[2m [22m
-"`
+Diagnostic Errors:
+Error: Test "pass 1" at tests/__spec__/basic.test.js:52:5 generated asynchronous activity after the test ended. This activity created the error "TypeError [ERR_INVALID_ARG_TYPE]: The "delay" argument must be of type number. Received function " and would have caused the test to fail, but instead triggered an unhandledRejection event."`
+
